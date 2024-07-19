@@ -12,9 +12,6 @@
 				<div id="main-content" class="main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="product-category grid-style">
 
-						{{-- Toolbar --}}
-						<x-toolbar></x-toolbar>
-            
 						{{-- Products --}}
             <div class="row">
 							<ul class="products-list">

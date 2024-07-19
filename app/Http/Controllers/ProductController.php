@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function index(string $slug)
     {
-    	$category = Category::where('slug', $slug)->firstOrFail();
+    	$category = Category::where('slug', $slug)->first();
     	
     	$products = Product::orderBy('id', 'DESC')
     		->where('category_id', $category->id)

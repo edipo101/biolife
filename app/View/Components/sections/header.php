@@ -5,6 +5,7 @@ namespace App\View\Components\sections;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use App\Models\Category;
 
 class header extends Component
 {
@@ -21,6 +22,7 @@ class header extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.sections.header');
+        $categories = Category::all();
+        return view('components.sections.header', compact('categories'));
     }
 }
