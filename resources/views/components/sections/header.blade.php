@@ -135,8 +135,8 @@
 				</div>
 				<div class="col-lg-9 col-md-8 padding-top-2px">
 					<div class="header-search-bar layout-01">
-						<form action="{{route('products.search')}}" class="form-search" name="desktop-seacrh" method="get">
-							<input type="text" name="s" class="input-text" value="" required="" placeholder="Buscar producto...">
+						<form action="{{route('products.search')}}" class="form-search" name="desktop-seacrh" method="get">					
+							<input type="text" name="s" class="input-text" value="{{session()->pull('search')}}" required="" placeholder="Buscar producto...">
 							<select name="c">
 								<option value="all" selected>Todas las categorías</option>
 								@foreach ($categories as $category)

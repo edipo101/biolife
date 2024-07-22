@@ -3,12 +3,18 @@
 namespace App\Models;
 
 use App\Models\Category;
+use Illuminate\Database\Eloquent\Relations\belongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
 	use HasFactory;
+
+	public function category(): belongsTo
+	{
+		return $this->belongsTo(Category::class);
+	}
 
 	public function scopeName($query, $name){
 		if($name)

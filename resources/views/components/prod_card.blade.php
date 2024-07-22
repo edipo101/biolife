@@ -1,20 +1,20 @@
 <div class="contain-product layout-default">
     <div class="product-thumb">
-        <a href="#" class="link-to-product">
+        <a href="{{route('product.details', ['slug'=>$slug])}}" class="link-to-product">
             <img src="{{asset('assets/images/products/p-'.$item.'.jpg')}}" alt="dd" width="270" height="270" class="product-thumnail">
         </a>
     </div>
     <div class="info">
-        <b class="categories">{{$category}}</b>
+        {{-- <b class="categories">{{$category}}</b> --}}
         <h4 class="product-title"><a href="#" class="pr-name">{{Str::limit($name, config('biolife.prod_title_limit'))}}</a></h4>
         <div class="price">
             <ins><span class="price-amount"><span class="currencySymbol">Bs </span>{{$currentPrice}}</span></ins>
             <del><span class="price-amount"><span class="currencySymbol">Bs </span>{{$previousPrice}}</span></del>
         </div>
-        <div class="shipping-info">
+        {{-- <div class="shipping-info">
             <p class="shipping-day">3-Day Shipping</p>
             <p class="for-today">Pree Pickup Today</p>
-        </div>
+        </div> --}}
         {{-- <div class="slide-down-box">
             <p class="message">All products are carefully selected to ensure food safety.</p>
             <div class="buttons">

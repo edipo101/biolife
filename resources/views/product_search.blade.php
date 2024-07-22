@@ -2,7 +2,14 @@
   {{-- @include('partials.hero') --}}
 
 	{{-- Navigation bar --}}
-	<x-navigation_bar :category="$category->name"></x-navigation_bar>
+  <div class="container">
+      <nav class="biolife-nav">
+          <ul>
+              <li class="nav-item"><a href="{{route('home')}}" class="permal-link">Inicio</a></li>
+              <li class="nav-item"><span class="current-page">Búsqueda</span></li>
+          </ul>
+      </nav>
+  </div>
 
 	<div class="page-contain category-page no-sidebar">
 		<div class="container">
@@ -20,8 +27,9 @@
 								<li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                   <x-prod_card 
                   :item='$product->image_id'
-                  :category='$category->name'
+                  :category='$product->category->name'
                   :name='$product->name'
+                  :slug='$product->slug'
                   :currentPrice='$product->current_price'
                   :previousPrice='$product->previous_price'
                   />

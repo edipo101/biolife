@@ -22,8 +22,9 @@ Route::get('/', function () {
 // 	return view('product_grid');
 // })
 
-Route::get('/products/{slug}', [ProductController::class, 'index'])->name('products.index');
+Route::get('/category/{slug}', [ProductController::class, 'index'])->name('products.index');
 Route::get('/search', [ProductController::class, 'search'])->name('products.search');
+Route::get('/product/{slug}', [ProductController::class, 'details'])->name('product.details');
 // Route::get('/greeting', function () {
 //     return 'Hello World';
 // });

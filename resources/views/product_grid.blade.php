@@ -23,8 +23,9 @@
 								<li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                   <x-prod_card 
                   :item='$product->image_id'
-                  :category='$category->name'
+                  :category='$product->category->name'
                   :name='$product->name'
+                  :slug='$product->slug'
                   :currentPrice='$product->current_price'
                   :previousPrice='$product->previous_price'
                   />

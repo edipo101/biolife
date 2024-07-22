@@ -19,7 +19,8 @@ return new class extends Migration
             $table->float('current_price');
             $table->float('previous_price');
             $table->integer('image_id');
-            // $table->foreignId('category_id')->constrained();
+            $table->integer('rating')->nullable();
+            $table->string('code')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->timestamps();
 
