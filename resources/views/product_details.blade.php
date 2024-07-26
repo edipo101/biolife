@@ -97,14 +97,14 @@
 				<div class="product-tabs single-layout biolife-tab-contain">
 					<div class="tab-head">
 						<ul class="tabs">
-							<li class="tab-element active"><a href="#tab_1st" class="tab-link">Products Descriptions</a></li>
+							<li class="tab-element"><a href="#tab_1st" class="tab-link">Products Descriptions</a></li>
 							<li class="tab-element" ><a href="#tab_2nd" class="tab-link">Addtional information</a></li>
 							<li class="tab-element" ><a href="#tab_3rd" class="tab-link">Shipping & Delivery</a></li>
-							<li class="tab-element" ><a href="#tab_4th" class="tab-link">Customer Reviews <sup>(3)</sup></a></li>
+							<li class="tab-element active" ><a href="#tab_4th" class="tab-link">Calificación del producto <sup>(3)</sup></a></li>
 						</ul>
 					</div>
 					<div class="tab-content">
-						<div id="tab_1st" class="tab-contain desc-tab active">
+						<div id="tab_1st" class="tab-contain desc-tab">
 							<p class="desc">Quisque quis ipsum venenatis, fermentum ante volutpat, ornare enim. Phasellus molestie risus non aliquet cursus. Integer vestibulum mi lorem, id hendrerit ante lobortis non. Nunc ante ante, lobortis non pretium non, vulputate vel nisi. Maecenas dolor elit, fringilla nec turpis ac, auctor vulputate nulla. Phasellus sed laoreet velit.
 							Proin fringilla urna vel mattis euismod. Etiam sodales, massa non tincidunt iaculis, mauris libero scelerisque justo, ut rutrum lectus urna sit amet quam. Nulla maximus vestibulum mi vitae accumsan. Donec sit amet ligula et enim semper viverra a in arcu. Vestibulum enim ligula, varius sed enim vitae, posuere molestie velit. Morbi risus orci, congue in nulla at, sodales fermentum magna.</p>
 							<div class="desc-expand">
@@ -176,58 +176,58 @@
 								</ul>
 							</div>
 						</div>
-						<div id="tab_4th" class="tab-contain review-tab">
+						<div id="tab_4th" class="tab-contain review-tab active">
 							<div class="container">
 								<div class="row">
 									<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
 										<div class="rating-info">
-											<p class="index"><strong class="rating">4.4</strong>out of 5</p>
-											<div class="rating"><p class="star-rating"><span class="width-80percent"></span></p></div>
-											<p class="see-all">See all 68 reviews</p>
+											<p class="index"><strong class="rating">{{$product->rating + 1}}</strong>sobre 5</p>
+											<div class="rating"><p class="star-rating"><span class="width-{{number_format($product->rating + 1) * 10}}percent"></span></p></div>
+											<p class="see-all">Ver las {{$product->sum_rating()}} calificaciones</p>
 											<ul class="options">
 												<li>
 													<div class="detail-for">
 														<span class="option-name">5stars</span>
 														<span class="progres">
-															<span class="line-100percent"><span class="percent width-90percent"></span></span>
+															<span class="line-100percent"><span class="percent width-{{ $product->star5 <= 100 ? number_format($product->star5 / 10) * 10 : 100}}percent"></span></span>
 														</span>
-														<span class="number">90</span>
+														<span class="number">{{$product->star5}}</span>
 													</div>
 												</li>
 												<li>
 													<div class="detail-for">
 														<span class="option-name">4stars</span>
 														<span class="progres">
-															<span class="line-100percent"><span class="percent width-30percent"></span></span>
+															<span class="line-100percent"><span class="percent width-{{ $product->star4 <= 100 ? number_format($product->star4 / 10) * 10 : 100}}percent"></span></span>
 														</span>
-														<span class="number">30</span>
+														<span class="number">{{$product->star4}}</span>
 													</div>
 												</li>
 												<li>
 													<div class="detail-for">
 														<span class="option-name">3stars</span>
 														<span class="progres">
-															<span class="line-100percent"><span class="percent width-40percent"></span></span>
+															<span class="line-100percent"><span class="percent width-{{ $product->star3 <= 100 ? number_format($product->star3 / 10) * 10 : 100}}percent"></span></span>
 														</span>
-														<span class="number">40</span>
+														<span class="number">{{$product->star3}}</span>
 													</div>
 												</li>
 												<li>
 													<div class="detail-for">
 														<span class="option-name">2stars</span>
 														<span class="progres">
-															<span class="line-100percent"><span class="percent width-20percent"></span></span>
+															<span class="line-100percent"><span class="percent width-{{ $product->star2 <= 100 ? number_format($product->star2 / 10) * 10 : 100}}percent"></span></span>
 														</span>
-														<span class="number">20</span>
+														<span class="number">{{$product->star2}}</span>
 													</div>
 												</li>
 												<li>
 													<div class="detail-for">
 														<span class="option-name">1star</span>
 														<span class="progres">
-															<span class="line-100percent"><span class="percent width-10percent"></span></span>
-														</span>
-														<span class="number">10</span>
+															<span class="line-100percent"><span class="percent width-{{ $product->star1 <= 100 ? number_format($product->star1 / 10) * 10 : 100}}percent"></span></span>
+															</span>
+														<span class="number">{{$product->star1}}</span>
 													</div>
 												</li>
 											</ul>
@@ -235,10 +235,10 @@
 									</div>
 									<div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
 										<div class="review-form-wrapper">
-											<span class="title">Submit your review</span>
+											<span class="title">Envíenos su calificación</span>
 											<form action="#" name="frm-review" method="post">
 												<div class="comment-form-rating">
-													<label>1. Your rating of this products:</label>
+													<label>1. Su calificación para este producto:</label>
 													<p class="stars">
 														<span>
 															<a class="btn-rating" data-value="star-1" href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
@@ -250,16 +250,16 @@
 													</p>
 												</div>
 												<p class="form-row wide-half">
-													<input type="text" name="name" value="" placeholder="Your name">
+													<input type="text" name="name" value="" placeholder="Su nombre">
 												</p>
 												<p class="form-row wide-half">
-													<input type="email" name="email" value="" placeholder="Email address">
+													<input type="email" name="email" value="" placeholder="Correo electrónico">
 												</p>
 												<p class="form-row">
-													<textarea name="comment" id="txt-comment" cols="30" rows="10" placeholder="Write your review here..."></textarea>
+													<textarea name="comment" id="txt-comment" cols="30" rows="10" placeholder="Escriba su opinión aquí..."></textarea>
 												</p>
 												<p class="form-row">
-													<button type="submit" name="submit">submit review</button>
+													<button type="submit" name="submit">Enviar calificación</button>
 												</p>
 											</form>
 										</div>

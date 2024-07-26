@@ -19,8 +19,15 @@ return new class extends Migration
             $table->float('current_price');
             $table->float('previous_price');
             $table->integer('image_id');
-            $table->integer('rating')->nullable();
             $table->string('code')->nullable();
+
+            // Rating
+            $table->integer('star1')->default(0);
+            $table->integer('star2')->default(0);
+            $table->integer('star3')->default(0);
+            $table->integer('star4')->default(0);
+            $table->integer('star5')->default(0);
+            
             $table->unsignedBigInteger('category_id');
             $table->timestamps();
 
